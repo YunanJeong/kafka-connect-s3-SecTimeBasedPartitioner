@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.yunanjeong</groupId>
-    <artifactId>sec-timebasedpartitioner</artifactId>
+    <artifactId>secnumber-timebasedpartitioner</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
