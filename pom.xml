@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.yunanjeong</groupId>
+    <artifactId>sec-timebasedpartitioner</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <!-- Required phrases to use Kafka Maven repositories-->
+    <repositories>
+        <repository>
+            <id>confluent</id>
+            <url>https://packages.confluent.io/maven/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- TimeBasedPartitioner를 수정할 때 필요한 최소한의 dependency이고, 쓰려면 위 repository도 기술해야 한다. -->
+        <!-- dependency가 2차적으로 많이 엮여있어서, 사실상 S3 Connector 전체 Dependency와 겹치는 것이 많다. -->
+        <!-- https://mvnrepository.com/artifact/io.confluent/kafka-connect-storage-partitioner -->
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-connect-storage-partitioner</artifactId>
+            <version>11.1.4</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.kafka/connect-api -->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>connect-api</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+
+    </dependencies>
+</project>
