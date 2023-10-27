@@ -1,7 +1,5 @@
 package io.github.yunanjeong.custom;
 
-import static io.confluent.connect.storage.partitioner.TimeBasedPartitioner.log;
-
 import org.apache.kafka.connect.sink.SinkRecord;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormatter;
