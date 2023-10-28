@@ -1,4 +1,4 @@
-# kafka-connect-s3-SecTimeBasedPartitioner
+# kafka-connect-s3-SecNumberTimeBasedPartitioner
 
 SecTimeBasedPartitioner: Custom Partitioner for S3 Sink Connector.
 
