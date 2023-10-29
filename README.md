@@ -1,18 +1,35 @@
 # kafka-connect-s3-SecNumberTimeBasedPartitioner
 
-SecTimeBasedPartitioner: Custom Partitioner for S3 Sink Connector.
+SecNumberTimeBasedPartitioner: Custom Partitioner for S3 Sink Connector.
 
-##
-```
-#Event Time in Raw Data # Unix timestamps in seconds
-{"time": "1234567890"}
+## Motivation: Unix timestamps in seconds or milliseconds?
 
-# TimeBasedPartitionner
+- TimeBasedPartitioner doesn't support Unix timestamps `in seconds`.
+- My raw data time means Unix timestamps in seconds.
+- I want to keep the time value unchanged and upload it to s3.
+- Use this partitioner if you don't want to modify previous pipeline steps, such as rawdata, kafka-client, source connector's smt, kstreams, etc.
+
+```sh
+#Event Time in Raw Data
+{"time": 1234567890}
+
+# TimeBasedPartitioner # 1234567s and 890ms
 s3://mybucket/year=1970/month=01/day=15/... 
 
-# SecNumberTimeBasedPartitioner
+# SecNumberTimeBasedPartitioner # 1234567890s and 000ms
 s3://mybucket/year=2019/month=02/day=14/...  
 ```
+
+- SecNumberTimeBasedPartitioner supports `Number` type only.
+
+```sh
+# Supported
+{"time": 1234567890}
+
+# Unsupported
+{"time": "1234567890"}
+```
+
 
 ## How to use
 
@@ -31,13 +48,14 @@ e.g.
     ├── etc
     ├── lib
     ├── manifest.json
-    └── sec-timebasedpartitioner.jar
+    └── secnumber-timebasedpartitioner.jar
 ```
   
 ### 3. In your S3 sink connector configuration, Write:
 
 ```properties
-"partitioner.class": "io.github.yunanjeong.custom.SecTimeBasedPartitioner"
+"timestamp.extractor": "RecordFieldSecNumber"
+"partitioner.class": "io.github.yunanjeong.custom.SecNumberTimeBasedPartitioner"
 ```
 
 ## How to build sources (Maven)
