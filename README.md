@@ -2,6 +2,18 @@
 
 SecTimeBasedPartitioner: Custom Partitioner for S3 Sink Connector.
 
+##
+```
+#Event Time in Raw Data # Unix timestamps in seconds
+{"time": "1234567890"}
+
+# TimeBasedPartitionner
+s3://mybucket/year=1970/month=01/day=15/... 
+
+# SecNumberTimeBasedPartitioner
+s3://mybucket/year=2019/month=02/day=14/...  
+```
+
 ## How to use
 
 ### 1. Install [S3 Sink Connector](https://www.confluent.io/hub/confluentinc/kafka-connect-s3)
