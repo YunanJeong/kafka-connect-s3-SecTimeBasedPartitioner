@@ -73,7 +73,7 @@ e.g.
 
   ```sh
   # maven 설치
-  sudo apt install mvn
+  sudo apt install maven
   
   # 빌드
   mvn install -f pom.xml -Dcheckstyle.skip -DskipTests
